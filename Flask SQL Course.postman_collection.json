@@ -1,0 +1,246 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Flask SQL Course",
+		"_postman_id": "9a4e0220-1d11-1ed5-8a25-5dd5afca21cd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/register",
+			"request": {
+				"url": "{{url}}/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"jose\", \n\t\"password\": \"asdf\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"jwt_token\", jsonData.access_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"jose\", \n\t\"password\": \"asdf\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/items",
+			"request": {
+				"url": "{{url}}/items",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"url": "{{url}}/item/chair",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"url": "{{url}}/item/chair",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"price\": 15.99, \n\t\"store_id\": 1\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"url": "{{url}}/item/chair",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/item/<name>",
+			"request": {
+				"url": "{{url}}/item/chair",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"price\": 17.99, \n\t\"store_id\": 2\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/stores",
+			"request": {
+				"url": "{{url}}/stores",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/store/<name>",
+			"request": {
+				"url": "{{url}}/store/mystore",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/store/<name>",
+			"request": {
+				"url": "{{url}}/store/mystore",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"mystore\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/store/<name>",
+			"request": {
+				"url": "{{url}}/store/mystore",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt {{jwt_token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
